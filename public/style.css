@@ -23,6 +23,7 @@
     padding: 0;
     align-items: center;
     justify-content: center;
+    display: flex;
   }
   .foto {
     width: 80vw;
@@ -41,6 +42,8 @@
     text-align: center;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    display: block;
+    align-self: center;
   }
   audio {
     width: 96vw !important;

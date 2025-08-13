@@ -49,15 +49,7 @@
         >Ligue o Som <span style="font-size: 1.5em">📣</span></span
       >
     </div>
-    <script>
-      const frases = document.querySelectorAll(".frase-carrossel");
-      let idx = 0;
-      setInterval(() => {
-        frases.forEach((el, i) => (el.style.display = "none"));
-        frases[idx].style.display = "inline";
-        idx = (idx + 1) % frases.length;
-      }, 2200);
-    </script>
+    <!-- Carrossel de frases -->
     <div
       style="
         display: flex;
@@ -124,9 +116,34 @@
       </div>
       <div class="item-galeria">
         <img src="/happy_bday_7.png" alt="Foto 7" class="foto" />
-        <div class="texto-galeria">Você merece tudo de melhor hoje e sempre!</div>
+        <div class="texto-galeria">
+          Você merece tudo de melhor hoje e sempre!
+        </div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Carrossel de frases
+        const frases = document.querySelectorAll(".frase-carrossel");
+        let idx = 0;
+        frases.forEach(
+          (el, i) => (el.style.display = i === 0 ? "inline" : "none")
+        );
+        setInterval(() => {
+          frases.forEach((el, i) => (el.style.display = "none"));
+          frases[idx].style.display = "inline";
+          idx = (idx + 1) % frases.length;
+        }, 2200);
+        // Garantir loop do áudio
+        const audio = document.querySelector("audio");
+        if (audio) {
+          audio.addEventListener("ended", function () {
+            audio.currentTime = 0;
+            audio.play();
+          });
+        }
+      });
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
